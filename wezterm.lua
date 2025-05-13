@@ -37,7 +37,7 @@ config = {
 	window_padding = {
 		left = 15,
 		right = 15,
-		top = 15,
+		top = 30,
 		bottom = 0,
 	},
 	font_rules = {
