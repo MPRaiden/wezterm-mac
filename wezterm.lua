@@ -12,8 +12,7 @@ local sessionizer = require("sessionizer")
 sessionizer.setup({
 	paths = {
 		os.getenv("HOME"),
-		os.getenv("HOME") .. "/Documents", -- Add specific paths if needed
-		os.getenv("HOME") .. "/Projects",
+		os.getenv("HOME") .. "/.config",
 	},
 })
 
@@ -27,7 +26,7 @@ config = {
 	font = wezterm.font("JetBrains Mono"),
 	enable_tab_bar = false,
 	use_fancy_tab_bar = false,
-	--window_background_opacity = 0.9,
+	window_background_opacity = 0.8,
 	macos_window_background_blur = 20,
 	window_decorations = "RESIZE",
 	scrollback_lines = 10000,
@@ -35,7 +34,7 @@ config = {
 	harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
 	max_fps = 120,
 	window_padding = {
-		left = 15,
+		left = 30,
 		right = 15,
 		top = 30,
 		bottom = 0,
