@@ -25,27 +25,23 @@ config = {
 	default_cursor_style = "BlinkingBlock",
 	adjust_window_size_when_changing_font_size = false,
 	font_size = 19,
-	font = wezterm.font("Agave Nerd Font", {italic = false, weight = "Regular"}),
+	font = wezterm.font("Agave Nerd Font", { italic = false, weight = "Regular" }),
 	enable_tab_bar = false,
 	use_fancy_tab_bar = false,
-	-- window_background_opacity = 0.8,
-	-- macos_window_background_blur = 40,
-	--window_decorations = "RESIZE",
 	scrollback_lines = 10000,
 	default_workspace = "main",
 	harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
 	max_fps = 120,
 	window_padding = {
-		left = 10,
+		left = 15,
 		right = 15,
-		top = 30,
-		bottom = 0,
+		top = 15,
+		bottom = 15,
 	},
-	
+
 	colors = {
 		background = "black",
 	},
-
 
 	leader = { key = "a", mods = "CTRL", timeout_milliseconds = 2000 },
 	keys = {
