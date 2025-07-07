@@ -19,12 +19,12 @@ sessionizer.setup({
 })
 
 config = {
-	color_scheme = "rose-pine-moon",
+	color_scheme = "Catppuccin Frappe",
 	automatically_reload_config = true,
 	window_close_confirmation = "NeverPrompt", -- No prompts for closing windows/tabs
 	default_cursor_style = "BlinkingBlock",
 	adjust_window_size_when_changing_font_size = false,
-	font_size = 19,
+	font_size = 18,
 	font = wezterm.font("Agave Nerd Font", { italic = false, weight = "Regular" }),
 	enable_tab_bar = false,
 	use_fancy_tab_bar = false,
@@ -41,6 +41,7 @@ config = {
 
 	colors = {
 		background = "black",
+		cursor_bg = "white",
 	},
 
 	leader = { key = "a", mods = "CTRL", timeout_milliseconds = 2000 },
