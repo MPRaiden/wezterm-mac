@@ -1,64 +1,55 @@
 local wezterm = require("wezterm")
-local config = {}
 local act = wezterm.action
 
--- Adjust Lua module path to include home directory for sessionizer.lua
-package.path = package.path .. ";" .. os.getenv("HOME") .. "/?.lua"
+local leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
 
--- Load the sessionizer module
-local sessionizer = require("sessionizer")
-
--- Configure the sessionizer
-sessionizer.setup({
-	paths = {
-		os.getenv("HOME"),
-		os.getenv("HOME") .. "/.config",
-		os.getenv("HOME") .. "/Applications",
-		os.getenv("HOME") .. "/Playground",
+local config = {
+	leader = leader,
+	keys = {
+		{ key = "t", mods = "CTRL", action = act.SpawnTab("CurrentPaneDomain") },
+		{ key = "]", mods = "CTRL", action = act.ActivateTabRelative(1) },
+		{ key = "[", mods = "CTRL", action = act.ActivateTabRelative(-1) },
+		{ key = "q", mods = "CTRL", action = act.CloseCurrentTab({ confirm = false }) },
+		{ key = "x", mods = "LEADER", action = act.ActivateCopyMode },
 	},
-})
-
-config = {
-	color_scheme = "Catppuccin Frappe",
+	color_scheme = "Tokyo Night Day",
 	automatically_reload_config = true,
-	window_close_confirmation = "NeverPrompt", -- No prompts for closing windows/tabs
+	window_close_confirmation = "NeverPrompt",
+	clean_exit_codes = { 0, 1, 130 },
 	default_cursor_style = "BlinkingBlock",
 	adjust_window_size_when_changing_font_size = false,
-	font_size = 18,
-	font = wezterm.font("Agave Nerd Font", { italic = false, weight = "Regular" }),
-	enable_tab_bar = false,
+	check_for_updates = true,
+	font_size = 14,
+	font = wezterm.font("JetBrains Mono", { weight = "Medium" }),
+	window_decorations = "RESIZE|INTEGRATED_BUTTONS",
+	enable_tab_bar = true,
 	use_fancy_tab_bar = false,
-	scrollback_lines = 10000,
+	scrollback_lines = 10000000,
 	default_workspace = "main",
-	harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
+	harfbuzz_features = { "-calt", "-liga", "-dlig" },
 	max_fps = 120,
 	window_padding = {
-		left = 15,
-		right = 15,
-		top = 15,
-		bottom = 15,
+		left = 10,
+		right = 10,
+		top = 30,
+		bottom = 10,
 	},
-
 	colors = {
-		background = "black",
-		cursor_bg = "white",
-	},
-
-	leader = { key = "a", mods = "CTRL", timeout_milliseconds = 2000 },
-	keys = {
-		{ key = "a", mods = "LEADER|CTRL", action = act.SendKey({ key = "a", mods = "CTRL" }) },
-		{ key = "c", mods = "LEADER", action = act.ActivateCopyMode },
-		{ key = "phys:Space", mods = "LEADER", action = act.ActivateCommandPalette },
-		{ key = "[", mods = "CTRL", action = act.SwitchWorkspaceRelative(-1) },
-		{ key = "]", mods = "CTRL", action = act.SwitchWorkspaceRelative(1) },
-		{ key = "s", mods = "LEADER", action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) }, -- Workspace switcher
-		{ key = "q", mods = "LEADER", action = act.CloseCurrentPane({ confirm = false }) },
-		{
-			key = "f",
-			mods = "LEADER",
-			action = wezterm.action_callback(function(window, pane)
-				sessionizer.toggle(window, pane)
-			end),
+		tab_bar = {
+			background = "#e1e2e7", -- base background (light grey-blue)
+			active_tab = {
+				bg_color = "#ffffff", -- active tab (clean white)
+				fg_color = "#3760bf", -- blue accent (Tokyo Night primary)
+				intensity = "Bold",
+			},
+			inactive_tab = {
+				bg_color = "#e1e2e7",
+				fg_color = "#565a6e", -- muted grey text
+			},
+			new_tab = {
+				bg_color = "#e1e2e7",
+				fg_color = "#565a6e",
+			},
 		},
 	},
 }
