@@ -24,6 +24,7 @@ local config = {
 	window_decorations = "RESIZE|INTEGRATED_BUTTONS",
 	enable_tab_bar = true,
 	use_fancy_tab_bar = false,
+	tab_max_width = 50,
 	scrollback_lines = 10000000,
 	default_workspace = "main",
 	harfbuzz_features = { "-calt", "-liga", "-dlig" },
